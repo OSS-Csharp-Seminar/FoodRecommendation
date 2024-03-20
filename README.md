@@ -12,13 +12,13 @@ With our web application, utilizing AI, you can easily discover restaurant dishe
 ## Features
 
 ### Recommending restaraunts
-  - AI chat 
+  - AI chat <br> 
       &#x25E6; Text based asnwer
       &#x25E6; Text based restrictions
-  - Sorting management (reviews)
+  - Sorting management (reviews) <br>
       &#x25E6; Price and review sorting
 ### Recommending recipes
-  - AI chat
+  - AI chat <br>
       &#x25E6; Text based asnwer
       &#x25E6; Text based restrictions
   - Optimize ingredients and time
