@@ -7,5 +7,21 @@ Food recommendation app
 
 ## Introduction
 ShakFood is a web application for personalized restaurant and recipe recommendations.
-With our web application, you can easily discover restaurant dishes and recipes based on your cravings and items in your fridge.
+With our web application, utilizing AI, you can easily discover restaurant dishes and recipes based on your cravings and items in your fridge.
+
+## Features
+
+### Recommending restaraunts
+  - AI chat 
+      &#x25E6; Text based asnwer
+      &#x25E6; Text based restrictions
+  - Sorting management (reviews)
+      &#x25E6; Price and review sorting
+### Recommending recipes
+  - AI chat
+      &#x25E6; Text based asnwer
+      &#x25E6; Text based restrictions
+  - Optimize ingredients and time
+
+## Database
 
