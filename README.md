@@ -15,7 +15,7 @@ With our web application, utilizing AI, you can easily discover restaurant dishe
   - AI chat <br> 
       &#x25E6; Text based asnwer<br>
       &#x25E6; Text based restrictions
-  - Sorting management (reviews) <br>
+  - Sort management (reviews) <br>
       &#x25E6; Price and review sorting
 ### Recommending recipes
   - AI chat <br>
