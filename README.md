@@ -24,4 +24,4 @@ With our web application, utilizing AI, you can easily discover restaurant dishe
   - Optimize ingredients and time
 
 ## Database
-![image](https://github.com/OSS-Csharp-Seminar/FoodRecommendation/assets/92531742/5b28c99c-ab0f-4c28-9026-bf8e69f8baf9)
+![ShakFood_db](https://github.com/OSS-Csharp-Seminar/FoodRecommendation/assets/92452548/409eb9af-8fe5-4846-86e9-31fbab8487f6)
