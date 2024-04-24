@@ -5695,19 +5695,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pasko\\.nuget\\packages\\": {}
+    "C:\\Users\\Matej\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pasko\\source\\repos\\Core\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\pasko\\source\\repos\\Core\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pasko\\source\\repos\\Core\\Core\\obj\\",
+      "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5727,6 +5732,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -5788,7 +5798,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
