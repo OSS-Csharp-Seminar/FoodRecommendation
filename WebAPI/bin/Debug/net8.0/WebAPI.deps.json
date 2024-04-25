@@ -12,11 +12,11 @@
           "FluentValidation": "11.9.1",
           "FluentValidation.DependencyInjectionExtensions": "11.9.1",
           "MediatR": "12.2.0",
-          "Microsoft.DotNet.ILCompiler": "8.0.1",
+          "Microsoft.DotNet.ILCompiler": "8.0.4",
           "Microsoft.EntityFrameworkCore": "8.0.4",
           "Microsoft.EntityFrameworkCore.Design": "8.0.4",
           "Microsoft.Extensions.Hosting": "8.0.0",
-          "Microsoft.NET.ILLink.Tasks": "8.0.1"
+          "Microsoft.NET.ILLink.Tasks": "8.0.4"
         },
         "runtime": {
           "WebAPI.dll": {}
@@ -426,7 +426,7 @@
           }
         }
       },
-      "Microsoft.DotNet.ILCompiler/8.0.1": {},
+      "Microsoft.DotNet.ILCompiler/8.0.4": {},
       "Microsoft.EntityFrameworkCore/8.0.4": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "8.0.4",
@@ -850,7 +850,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.1": {},
+      "Microsoft.NET.ILLink.Tasks/8.0.4": {},
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
       "Microsoft.SqlServer.Server/1.0.0": {
@@ -1415,12 +1415,12 @@
       "path": "microsoft.data.sqlclient.sni.runtime/5.1.1",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512"
     },
-    "Microsoft.DotNet.ILCompiler/8.0.1": {
+    "Microsoft.DotNet.ILCompiler/8.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vEmBtYRsH2gpnUJ9p7ElgB2UZSx5+CF2nHVr2QJ/3kzlfAYBxqXMx3VmQcxOcrsDEuF4/n1VH95qobrj8xnPdw==",
-      "path": "microsoft.dotnet.ilcompiler/8.0.1",
-      "hashPath": "microsoft.dotnet.ilcompiler.8.0.1.nupkg.sha512"
+      "sha512": "sha512-bVK6XD5E/BpkPmdrx99ZkloZZX3nOvTAcW+W6jW4cs8elWlLFAc9BXHk2esxSVHMiaCLiLdIJAyhUfhV50TW+Q==",
+      "path": "microsoft.dotnet.ilcompiler/8.0.4",
+      "hashPath": "microsoft.dotnet.ilcompiler.8.0.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/8.0.4": {
       "type": "package",
@@ -1751,12 +1751,12 @@
       "path": "microsoft.identitymodel.tokens/6.35.0",
       "hashPath": "microsoft.identitymodel.tokens.6.35.0.nupkg.sha512"
     },
-    "Microsoft.NET.ILLink.Tasks/8.0.1": {
+    "Microsoft.NET.ILLink.Tasks/8.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ADdJXuKNjwZDfBmybMnpvwd5CK3gp92WkWqqeQhW4W+q4MO3Qaa9QyW2DcFLAvCDMcCWxT5hRXqGdv13oon7nA==",
-      "path": "microsoft.net.illink.tasks/8.0.1",
-      "hashPath": "microsoft.net.illink.tasks.8.0.1.nupkg.sha512"
+      "sha512": "sha512-PZb5nfQ+U19nhnmnR9T1jw+LTmozhuG2eeuzuW5A7DqxD/UXW2ucjmNJqnqOuh8rdPzM3MQXoF8AfFCedJdCUw==",
+      "path": "microsoft.net.illink.tasks/8.0.4",
+      "hashPath": "microsoft.net.illink.tasks.8.0.4.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",

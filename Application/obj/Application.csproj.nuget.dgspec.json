@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pasko\\source\\repos\\Core\\Application\\Application.csproj": {}
+    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pasko\\source\\repos\\Core\\Application\\Application.csproj": {
+    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pasko\\source\\repos\\Core\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\pasko\\source\\repos\\Core\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pasko\\source\\repos\\Core\\Application\\obj\\",
+        "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\pasko\\source\\repos\\Core\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\pasko\\source\\repos\\Core\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj"
               }
             }
           }
@@ -38,6 +42,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -77,21 +86,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\pasko\\source\\repos\\Core\\Core\\Core.csproj": {
+    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pasko\\source\\repos\\Core\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\pasko\\source\\repos\\Core\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pasko\\source\\repos\\Core\\Core\\obj\\",
+        "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -111,6 +124,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -172,21 +190,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\pasko\\source\\repos\\Core\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pasko\\source\\repos\\Core\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\pasko\\source\\repos\\Core\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pasko\\source\\repos\\Core\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -200,8 +222,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\pasko\\source\\repos\\Core\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\pasko\\source\\repos\\Core\\Core\\Core.csproj"
+              "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj"
               }
             }
           }
@@ -210,6 +232,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -277,7 +304,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
