@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\Migrations\\20240424235236_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DataAccess\\Migrations\\20240424235236_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{45D34C3B-7D78-4ED0-8ED6-DC2B40C0D33B}|DataAccess\\DataAccess.csproj|c:\\users\\matej\\desktop\\faks\\c#_project\\foodrecommendation\\dataaccess\\persistence\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{45D34C3B-7D78-4ED0-8ED6-DC2B40C0D33B}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\persistence\\databasecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCF50DAF-A628-4BEA-A4B1-E43777C76B0E}|Core\\Core.csproj|c:\\users\\matej\\desktop\\faks\\c#_project\\foodrecommendation\\core\\entities\\restaurant_food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCF50DAF-A628-4BEA-A4B1-E43777C76B0E}|Core\\Core.csproj|solutionrelative:core\\entities\\restaurant_food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BCF50DAF-A628-4BEA-A4B1-E43777C76B0E}|Core\\Core.csproj|c:\\users\\matej\\desktop\\faks\\c#_project\\foodrecommendation\\core\\entities\\restaurant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BCF50DAF-A628-4BEA-A4B1-E43777C76B0E}|Core\\Core.csproj|solutionrelative:core\\entities\\restaurant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{30CAF4FC-4FCA-4F05-A735-E311440B4084}|WebAPI\\WebAPI.csproj|c:\\users\\matej\\desktop\\faks\\c#_project\\foodrecommendation\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30CAF4FC-4FCA-4F05-A735-E311440B4084}|WebAPI\\WebAPI.csproj|solutionrelative:webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 307,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20240424235236_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\Migrations\\20240424235236_InitialCreate.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Migrations\\20240424235236_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\Migrations\\20240424235236_InitialCreate.cs",
+              "RelativeToolTip": "DataAccess\\Migrations\\20240424235236_InitialCreate.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T23:52:36.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Restaurant_Food.cs",
+              "DocumentMoniker": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Entities\\Restaurant_Food.cs",
+              "RelativeDocumentMoniker": "Core\\Entities\\Restaurant_Food.cs",
+              "ToolTip": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Entities\\Restaurant_Food.cs",
+              "RelativeToolTip": "Core\\Entities\\Restaurant_Food.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T20:22:34.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Restaurant.cs",
+              "DocumentMoniker": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Entities\\Restaurant.cs",
+              "RelativeDocumentMoniker": "Core\\Entities\\Restaurant.cs",
+              "ToolTip": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Entities\\Restaurant.cs",
+              "RelativeToolTip": "Core\\Entities\\Restaurant.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T20:18:24.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\WebAPI\\Program.cs",
+              "RelativeToolTip": "WebAPI\\Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T17:26:45.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DatabaseContext.cs",
+              "DocumentMoniker": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\Persistence\\DatabaseContext.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Persistence\\DatabaseContext.cs",
+              "ToolTip": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\Persistence\\DatabaseContext.cs",
+              "RelativeToolTip": "DataAccess\\Persistence\\DatabaseContext.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAUwC4AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T17:04:14.981Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
