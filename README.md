@@ -25,3 +25,13 @@ With our web application, utilizing AI, you can easily discover restaurant dishe
 
 ## Database
 ![ShakFood_DB_Model](https://github.com/OSS-Csharp-Seminar/FoodRecommendation/assets/92452548/17c8e00b-ee23-4d61-b481-bad5be50c6af)
+
+##Llama
+
+### Useful website for datasets
+> [!IMPORTANT]
+> Usefulness may vary depending on case
+  - https://www.kaggle.com/datasets
+  - https://sigma.ai/open-datasets/
+  - https://www.openml.org
+
