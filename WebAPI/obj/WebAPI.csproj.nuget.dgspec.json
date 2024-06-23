@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj": {
+    "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\obj\\",
+        "projectPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Application\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\DataAccess\\DataAccess.csproj"
               }
             }
           }
@@ -42,11 +38,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,19 +46,23 @@
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
             },
             "MediatR": {
               "target": "Package",
-              "version": "[12.2.0, )"
+              "version": "[12.3.0, )"
+            },
+            "Microsoft.AspNetCore.Hosting": {
+              "target": "Package",
+              "version": "[2.2.7, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0-preview.5.24306.7, )"
             }
           },
           "imports": [
@@ -86,25 +81,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj": {
+    "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\obj\\",
+        "projectPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -124,11 +115,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -137,37 +123,37 @@
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
             },
             "MediatR": {
               "target": "Package",
-              "version": "[12.2.0, )"
+              "version": "[12.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0-preview.5.24306.7, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -190,25 +176,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -222,8 +204,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Core\\Core.csproj"
+              "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Core\\Core.csproj"
               }
             }
           }
@@ -232,11 +214,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -245,43 +222,51 @@
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
             },
             "MediatR": {
               "target": "Package",
-              "version": "[12.2.0, )"
+              "version": "[12.3.0, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0-preview.5.24306.7, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -304,25 +289,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\WebAPI\\WebAPI.csproj": {
+    "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\Matej\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\pasko\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Matej\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\pasko\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -336,8 +317,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\Matej\\Desktop\\Faks\\C#_project\\FoodRecommendation\\Application\\Application.csproj"
+              "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\Application\\Application.csproj"
               }
             }
           }
@@ -346,11 +327,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -359,41 +335,47 @@
           "dependencies": {
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
             },
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
-              "version": "[11.9.1, )"
+              "version": "[11.9.2, )"
             },
             "MediatR": {
               "target": "Package",
-              "version": "[12.2.0, )"
+              "version": "[12.3.0, )"
             },
-            "Microsoft.DotNet.ILCompiler": {
-              "suppressParent": "All",
+            "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
               "target": "Package",
-              "version": "[8.0.4, )",
-              "autoReferenced": true
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[9.0.0-preview.5.24306.7, )"
             },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.4, )",
-              "autoReferenced": true
+              "version": "[8.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
             }
           },
           "imports": [
@@ -407,12 +389,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "runtime.win-x64.Microsoft.DotNet.ILCompiler",
-              "version": "[8.0.4, 8.0.4]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -421,7 +397,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

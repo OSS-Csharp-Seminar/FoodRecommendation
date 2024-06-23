@@ -8,20 +8,12 @@ using System.Reflection;
 
 namespace DataAccess.Persistence
 {
+
     public class DatabaseContext : DbContext
     {
-        private readonly IConfiguration configuration;
-
-        // Uncomment if needed
-        // public DatabaseContext(DbContextOptions<DatabaseContext> options, IConfiguration configuration)
-        //     : base(options)
-        // {
-        //     this.configuration = configuration;
-        // }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-DMLS484\\MSSQLSERVER01;Initial Catalog=ShakFoodDb;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -51,9 +43,11 @@ namespace DataAccess.Persistence
                 entity.ToTable("Food");
                 entity.HasKey(f => f.Id);
                 entity.Property(f => f.Name).IsRequired().HasMaxLength(100);
-                entity.Property(f => f.Price).IsRequired().HasMaxLength(10);
+                entity.Property(f => f.Price).IsRequired().HasColumnType("decimal(18,2)");
                 entity.Property(f => f.Description).HasMaxLength(100);
-                entity.HasOne(f => f.Category_ID).WithMany().HasForeignKey("Category_ID");
+                entity.HasOne(f => f.Category)
+                      .WithMany()
+                      .HasForeignKey(f => f.Category_ID);
             });
 
             modelBuilder.Entity<Restaurant>(entity =>

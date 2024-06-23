@@ -1,28 +1,45 @@
-using System;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Application;
+using Application.DataServices;
+using Application.Interfaces;
+using Application.Services;
 using DataAccess.Persistence;
-using Core.Entiteti;
-using Microsoft.AspNetCore.Hosting;
+using DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
+using WebAPI.CompiledModels;
 
-namespace MyApp
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IRestaurantLogic, RestaurantLogic>();
+builder.Services.AddScoped<IRestaurantDS, RestaurantDS>();
+
+builder.Services.AddDbContext<DatabaseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+builder.Services.AddDbContext<DatabaseContext>(options =>
 {
-    class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseModel(DatabaseContextModel.Instance);
+});
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Program>();
-                });
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<DatabaseContext>();
-        }
-    }
+builder.Services.AddControllers();
+builder.Services.AddSwaggerGen();
+builder.Services.AddEndpointsApiExplorer();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
 }
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+
+app.Run();

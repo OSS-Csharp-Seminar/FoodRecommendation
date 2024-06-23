@@ -17,7 +17,7 @@ namespace Application.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -30,23 +30,27 @@ namespace Application.Migrations
 
                     b.Property<string>("City_code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("County")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("ZIP")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("City");
+                    b.ToTable("City", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entiteti.Food", b =>
@@ -55,21 +59,27 @@ namespace Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("Category_ID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Price")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Food");
+                    b.HasIndex("Category_ID");
+
+                    b.ToTable("Food", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entiteti.Food_category", b =>
@@ -80,11 +90,12 @@ namespace Application.Migrations
 
                     b.Property<string>("Category")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Food_category");
+                    b.ToTable("Food_category", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entiteti.Restaurant", b =>
@@ -93,13 +104,19 @@ namespace Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("City_ID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Restaurant");
+                    b.HasIndex("City_ID");
+
+                    b.ToTable("Restaurant", (string)null);
                 });
 
             modelBuilder.Entity("Core.Entiteti.Restaurant_Food", b =>
@@ -114,7 +131,27 @@ namespace Application.Migrations
 
                     b.HasIndex("Restaurant_ID");
 
-                    b.ToTable("Restaurant_Food");
+                    b.ToTable("Restaurant_Food", (string)null);
+                });
+
+            modelBuilder.Entity("Core.Entiteti.Food", b =>
+                {
+                    b.HasOne("Core.Entiteti.Food_category", "Category")
+                        .WithMany()
+                        .HasForeignKey("Category_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Core.Entiteti.Restaurant", b =>
+                {
+                    b.HasOne("Core.Entiteti.City", "City")
+                        .WithMany()
+                        .HasForeignKey("City_ID");
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Core.Entiteti.Restaurant_Food", b =>
