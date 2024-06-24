@@ -1,12 +1,12 @@
 ﻿using Core.Common;
 
-namespace Core.Entiteti 
+namespace Core.Entiteti
 {
-    public class Restaurant :BaseEntity
+    public class Restaurant : BaseEntity
     {
+        public Guid CityId { get; set; } 
+        public City City { get; set; }   
 
-        
-        public City City;
         public string Name { get; set; }
     }
 }

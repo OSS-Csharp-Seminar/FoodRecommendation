@@ -1,12 +1,10 @@
-﻿using Core.Common;
+﻿using Core.Entiteti;
 
-namespace Core.Entiteti
+public class City : BaseEntity
 {
-    public class City :BaseEntity
-    {
-        public string Name{ get;set;}
-        public string ZIP { get; set; }
-        public string County { get; set; }
-        public string City_code { get; set; }
-    }
+    public string Name { get; set; }
+    public string City_code { get; set; }
+    public string County { get; set; }
+    public string Zip { get; set; }
+    public List<Restaurant> Restaurants { get; set; } = new List<Restaurant>();
 }

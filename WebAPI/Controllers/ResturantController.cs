@@ -1,14 +1,21 @@
 ﻿using Application.Interfaces;
 using Core.Entiteti;
+using Core.Common;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    public class RestourantController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantLogic _restaurantLogic;
 
-        public RestourantController(IRestaurantLogic restaurantLogic)
+        public RestaurantController(IRestaurantLogic restaurantLogic)
         {
             _restaurantLogic = restaurantLogic;
         }
@@ -21,6 +28,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("byName")]
+
         public async Task<IActionResult> GetRestaurantsByName(string name)
         {
             var restaurants = await _restaurantLogic.GetRestaurantsByNameAsync(name);
@@ -33,16 +41,21 @@ namespace WebAPI.Controllers
             var restaurants = await _restaurantLogic.GetRestaurantsByCityNameAsync(cityName);
             return Ok(restaurants);
         }
-        // POST: api/Restaurant
+
         [HttpPost("")]
         public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant)
         {
+            if (restaurant == null || restaurant.CityId == Guid.Empty)
+            {
+                return BadRequest("CityId is required.");
+            }
+
             await _restaurantLogic.AddRestaurantAsync(restaurant);
             return CreatedAtAction("GetRestaurant", new { id = restaurant.Id }, restaurant);
         }
 
-
         [HttpPut("{id}")]
+
         public async Task<IActionResult> PutRestaurant(Guid id, Restaurant restaurant)
         {
             if (id != restaurant.Id)
@@ -56,6 +69,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+ 
         public async Task<IActionResult> DeleteRestaurant(Guid id)
         {
             var restaurant = await _restaurantLogic.GetRestaurantByIdAsync(id);
@@ -67,6 +81,18 @@ namespace WebAPI.Controllers
             await _restaurantLogic.DeleteRestaurantAsync(id);
 
             return NoContent();
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> GetRestaurantById(Guid id)
+        {
+            var restaurant = await _restaurantLogic.GetRestaurantByIdAsync(id);
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+            return Ok(restaurant);
         }
     }
 }
