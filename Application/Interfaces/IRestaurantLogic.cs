@@ -13,6 +13,6 @@ namespace Application.Interfaces
         Task AddRestaurantAsync(Restaurant restaurant);
         Task UpdateRestaurantAsync(Restaurant restaurant);
         Task DeleteRestaurantAsync(Guid id);
-
+        Task<bool> RestaurantExistsAsync(string name);
     }
 }

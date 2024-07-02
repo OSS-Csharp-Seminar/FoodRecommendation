@@ -50,5 +50,9 @@ namespace Application.Services
         {
             await _restaurantDS.DeleteAsync(id);
         }
+        public async Task<bool> RestaurantExistsAsync(string name)
+        {
+            return await _restaurantDS.RestaurantExistsAsync(name);
+        }
     }
 }

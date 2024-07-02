@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Core.Entiteti;
 using DataAccess.DataServices;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace Application.Services
         {
             return await _cityData.GetAllAsync();
         }
+
 
         public async Task<City> GetCityByIdAsync(Guid id)
         {
@@ -39,5 +41,11 @@ namespace Application.Services
         {
             await _cityData.DeleteAsync(id);
         }
+        public async Task<City> GetCityByNameAsync(string name)
+        {
+            return await _cityData.GetCityByNameAsync(name);
+        }
+        
+
     }
 }

@@ -17,12 +17,12 @@ namespace DataAccess.DataServices
 
         public async Task<List<City>> GetAllAsync()
         {
-            return await _context.City.ToListAsync();
+            return await _context.City.Include(c => c.Restaurants).ToListAsync();
         }
 
         public async Task<City> GetByIdAsync(Guid id)
         {
-            return await _context.City.FindAsync(id);
+            return await _context.City.Include(c => c.Restaurants).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task AddAsync(City city)
@@ -45,6 +45,14 @@ namespace DataAccess.DataServices
                 _context.City.Remove(city);
                 await _context.SaveChangesAsync();
             }
+        }
+        public async Task<City> GetCityByNameAsync(string name)
+        {
+            return await _context.City.FirstOrDefaultAsync(c => c.Name == name);
+        }
+        public async Task<City> GetCityByIdAsync(Guid id)
+        {
+            return await _context.City.FindAsync(id);
         }
     }
 }

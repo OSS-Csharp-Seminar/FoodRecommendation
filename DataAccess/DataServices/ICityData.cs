@@ -11,5 +11,7 @@ namespace DataAccess.DataServices
         Task AddAsync(City city);
         Task UpdateAsync(City city);
         Task DeleteAsync(Guid id);
+        Task<City> GetCityByNameAsync(string name);
+        Task<City> GetCityByIdAsync(Guid id);
     }
 }

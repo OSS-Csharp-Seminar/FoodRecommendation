@@ -16,5 +16,6 @@ namespace Application.DataServices
         Task DeleteAsync(Guid id);
         Task<List<Restaurant>> GetByNameAsync(string name);
         Task<List<Restaurant>> GetByCityNameAsync(string cityName);
+        Task<bool> RestaurantExistsAsync(string name);
     }
 }

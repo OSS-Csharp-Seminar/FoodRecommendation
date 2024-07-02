@@ -21,12 +21,12 @@ namespace DataAccess.Repositories
 
         public async Task<List<Restaurant>> GetAllAsync()
         {
-            return await _context.Restaurant.ToListAsync();
+            return await _context.Restaurant.Include(r => r.City).ToListAsync();
         }
 
         public async Task<Restaurant> GetByIdAsync(Guid id)
         {
-            var restaurant = await _context.Restaurant.FindAsync(id);
+            var restaurant = await _context.Restaurant.Include(r => r.City).FirstOrDefaultAsync(r => r.Id == id);
             if (restaurant == null)
             {
                 throw new NotFoundException($"Restaurant with ID {id} was not found.");
@@ -106,6 +106,10 @@ namespace DataAccess.Repositories
             {
                 throw new DatabaseException("An error occurred while retrieving restaurants by city name.", ex);
             }
+        }
+        public async Task<bool> RestaurantExistsAsync(string name)
+        {
+            return await _context.Restaurant.AnyAsync(r => r.Name == name);
         }
     }
 }

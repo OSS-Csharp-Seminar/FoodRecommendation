@@ -11,5 +11,6 @@ namespace Application.Interfaces
         Task AddCityAsync(City city);
         Task UpdateCityAsync(City city);
         Task DeleteCityAsync(Guid id);
+        Task<City> GetCityByNameAsync(string name);
     }
 }

@@ -1,11 +1,13 @@
 ﻿using Application.Interfaces;
 using Core.Entiteti;
 using Core.Common;
+using Core.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Services;
 
 namespace WebAPI.Controllers
 {
@@ -14,10 +16,12 @@ namespace WebAPI.Controllers
     public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantLogic _restaurantLogic;
+        private readonly ICityLogic _cityLogic;
 
-        public RestaurantController(IRestaurantLogic restaurantLogic)
+        public RestaurantController(IRestaurantLogic restaurantLogic, ICityLogic cityLogic)
         {
             _restaurantLogic = restaurantLogic;
+            _cityLogic = cityLogic;
         }
 
         [HttpGet("list")]
@@ -42,17 +46,37 @@ namespace WebAPI.Controllers
             return Ok(restaurants);
         }
 
-        [HttpPost("")]
-        public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant)
+        [HttpPost]
+        public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantDto restaurantDto)
         {
-            if (restaurant == null || restaurant.CityId == Guid.Empty)
+            if (restaurantDto == null || restaurantDto.CityId == Guid.Empty)
             {
-                return BadRequest("CityId is required.");
+                return BadRequest("Invalid data.");
             }
 
+            var city = await _cityLogic.GetCityByIdAsync(restaurantDto.CityId);
+            if (city == null)
+            {
+                return NotFound("City not found.");
+            }
+
+            if (await _restaurantLogic.RestaurantExistsAsync(restaurantDto.Name))
+            {
+                return Conflict("Restaurant with the same name already exists.");
+            }
+
+            var restaurant = new Restaurant
+            {
+                Name = restaurantDto.Name,
+                CityId = restaurantDto.CityId,
+                City = city
+            };
+
             await _restaurantLogic.AddRestaurantAsync(restaurant);
-            return CreatedAtAction("GetRestaurant", new { id = restaurant.Id }, restaurant);
+
+            return CreatedAtAction(nameof(GetRestaurantById), new { id = restaurant.Id }, restaurant);
         }
+
 
         [HttpPut("{id}")]
 
