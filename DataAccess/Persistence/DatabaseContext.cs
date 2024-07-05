@@ -25,8 +25,7 @@ namespace DataAccess.Persistence
                 entity.Property(c => c.County).HasMaxLength(100);
                 entity.Property(c => c.City_code).HasMaxLength(10);
                 entity.HasMany(c => c.Restaurants)
-                      .WithOne(r => r.City)
-                      .HasForeignKey(r => r.CityId)
+                      .WithOne()
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
@@ -35,10 +34,10 @@ namespace DataAccess.Persistence
                 entity.ToTable("Restaurant");
                 entity.HasKey(r => r.Id);
                 entity.Property(r => r.Name).IsRequired().HasMaxLength(100);
-                entity.HasOne(r => r.City)
-                      .WithMany(c => c.Restaurants)
-                      .HasForeignKey(r => r.CityId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne<City>()
+                    .WithMany(x=>x.Restaurants)
+                    .HasForeignKey(r => r.CityId)
+                    .OnDelete(DeleteBehavior.SetNull);
             });
 
             modelBuilder.Entity<Food_category>(entity =>
@@ -81,30 +80,30 @@ namespace DataAccess.Persistence
 
         public override int SaveChanges()
         {
-            CascadeUpdate();
+            //CascadeUpdate();
             return base.SaveChanges();
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            CascadeUpdate();
+            //CascadeUpdate();
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        private void CascadeUpdate()
-        {
-            var modifiedCities = ChangeTracker.Entries<City>()
-                .Where(e => e.State == EntityState.Modified)
-                .Select(e => e.Entity);
+        //private void CascadeUpdate()
+        //{
+        //    var modifiedCities = ChangeTracker.Entries<City>()
+        //        .Where(e => e.State == EntityState.Modified)
+        //        .Select(e => e.Entity);
 
-            foreach (var city in modifiedCities)
-            {
-                var restaurants = Restaurant.Where(r => r.CityId == city.Id).ToList();
-                foreach (var restaurant in restaurants)
-                {
-                    restaurant.City = city;
-                }
-            }
-        }
+        //    foreach (var city in modifiedCities)
+        //    {
+        //        var restaurants = Restaurant.Where(r => r.CityId == city.Id).ToList();
+        //        foreach (var restaurant in restaurants)
+        //        {
+        //            restaurant.CityId = city.Id;
+        //        }
+        //    }
+        //}
     }
 }

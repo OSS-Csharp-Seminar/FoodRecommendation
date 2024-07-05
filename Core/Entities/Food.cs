@@ -6,9 +6,10 @@ namespace Core.Entiteti
 {
     public class Food : BaseEntity
     {
+        [ForeignKey("Category_ID")]
         public Guid? Category_ID { get; set; }
 
-        [ForeignKey("Category_ID")]
+
         public Food_category? Category { get; set; }
 
         public decimal? Price { get; set; }

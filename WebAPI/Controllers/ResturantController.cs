@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantDto restaurantDto)
         {
-            if (restaurantDto == null || restaurantDto.CityId == Guid.Empty)
+            if (restaurantDto == null || restaurantDto.CityId == null)
             {
                 return BadRequest("Invalid data.");
             }
@@ -69,7 +69,6 @@ namespace WebAPI.Controllers
             {
                 Name = restaurantDto.Name,
                 CityId = restaurantDto.CityId,
-                City = city
             };
 
             await _restaurantLogic.AddRestaurantAsync(restaurant);

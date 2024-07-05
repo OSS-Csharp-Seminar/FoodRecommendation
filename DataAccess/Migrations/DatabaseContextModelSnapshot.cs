@@ -143,12 +143,10 @@ namespace Application.Migrations
 
             modelBuilder.Entity("Core.Entiteti.Restaurant", b =>
                 {
-                    b.HasOne("City", "City")
+                    b.HasOne("City", null)
                         .WithMany("Restaurants")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("City");
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("Core.Entiteti.Restaurant_Food", b =>
