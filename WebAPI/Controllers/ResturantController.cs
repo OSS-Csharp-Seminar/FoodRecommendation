@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Services;
+using Core.Exceptions;
 
 namespace WebAPI.Controllers
 {
@@ -46,36 +47,29 @@ namespace WebAPI.Controllers
             return Ok(restaurants);
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> CreateRestaurant([FromBody] RestaurantDto restaurantDto)
+        public async Task<IActionResult> CreateRestaurant([FromBody] Restaurant restaurant)
         {
-            if (restaurantDto == null || restaurantDto.CityId == null)
+            if (restaurant == null || restaurant.CityId == null)
             {
                 return BadRequest("Invalid data.");
             }
 
-            var city = await _cityLogic.GetCityByIdAsync(restaurantDto.CityId);
-            if (city == null)
+            try
             {
-                return NotFound("City not found.");
+                await _restaurantLogic.AddRestaurantAsync(restaurant);
+                return CreatedAtAction(nameof(GetRestaurantById), new { id = restaurant.Id }, restaurant);
             }
-
-            if (await _restaurantLogic.RestaurantExistsAsync(restaurantDto.Name))
+            catch (NotFoundException ex)
             {
-                return Conflict("Restaurant with the same name already exists.");
+                return NotFound(ex.Message);
             }
-
-            var restaurant = new Restaurant
+            catch (Exception ex)
             {
-                Name = restaurantDto.Name,
-                CityId = restaurantDto.CityId,
-            };
-
-            await _restaurantLogic.AddRestaurantAsync(restaurant);
-
-            return CreatedAtAction(nameof(GetRestaurantById), new { id = restaurant.Id }, restaurant);
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
-
 
         [HttpPut("{id}")]
 

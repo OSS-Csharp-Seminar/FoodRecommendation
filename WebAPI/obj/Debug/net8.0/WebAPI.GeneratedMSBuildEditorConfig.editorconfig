@@ -25,7 +25,3 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI
 build_property._RazorSourceGeneratorDebug = 
-
-[C:/Users/pasko/Desktop/zavrsni/FoodRecommendation/WebAPI/Views/RestourantContoller/restaurantList.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdG91cmFudENvbnRvbGxlclxyZXN0YXVyYW50TGlzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 

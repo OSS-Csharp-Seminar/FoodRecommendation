@@ -7,6 +7,7 @@ namespace Core.Entiteti
     {
         [ForeignKey("CityId")]
         public Guid? CityId { get; set; }
+        public virtual City? City { get; set; }
         //public City? City { get; set; }   
 
         public string? Name { get; set; }

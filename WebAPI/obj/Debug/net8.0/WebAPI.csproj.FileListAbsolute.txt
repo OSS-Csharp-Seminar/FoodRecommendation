@@ -626,8 +626,6 @@ C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.RazorAssemblyInfo.cache
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.RazorAssemblyInfo.cs
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.sourcelink.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\staticwebassets.development.json

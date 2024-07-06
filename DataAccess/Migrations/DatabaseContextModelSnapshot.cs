@@ -24,7 +24,7 @@ namespace Application.Migrations
 
             modelBuilder.Entity("City", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("CityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -36,17 +36,18 @@ namespace Application.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Zip")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CityId");
 
                     b.ToTable("City", (string)null);
                 });
@@ -106,7 +107,6 @@ namespace Application.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -143,10 +143,12 @@ namespace Application.Migrations
 
             modelBuilder.Entity("Core.Entiteti.Restaurant", b =>
                 {
-                    b.HasOne("City", null)
+                    b.HasOne("City", "City")
                         .WithMany("Restaurants")
                         .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("Core.Entiteti.Restaurant_Food", b =>

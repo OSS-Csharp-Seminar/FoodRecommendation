@@ -19,13 +19,14 @@ namespace DataAccess.Persistence
             modelBuilder.Entity<City>(entity =>
             {
                 entity.ToTable("City");
-                entity.HasKey(c => c.Id);
-                entity.Property(c => c.Name).IsRequired().HasMaxLength(100);
-                entity.Property(c => c.Zip).IsRequired().HasMaxLength(10);
+                entity.HasKey(c => c.CityId);
+                entity.Property(c => c.Name).HasMaxLength(100);
+                entity.Property(c => c.Zip).HasMaxLength(10);
                 entity.Property(c => c.County).HasMaxLength(100);
                 entity.Property(c => c.City_code).HasMaxLength(10);
                 entity.HasMany(c => c.Restaurants)
-                      .WithOne()
+                      .WithOne(r => r.City)
+                      .HasForeignKey(r => r.CityId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
@@ -33,11 +34,8 @@ namespace DataAccess.Persistence
             {
                 entity.ToTable("Restaurant");
                 entity.HasKey(r => r.Id);
-                entity.Property(r => r.Name).IsRequired().HasMaxLength(100);
-                entity.HasOne<City>()
-                    .WithMany(x=>x.Restaurants)
-                    .HasForeignKey(r => r.CityId)
-                    .OnDelete(DeleteBehavior.SetNull);
+                entity.Property(r => r.Name).HasMaxLength(100);
+
             });
 
             modelBuilder.Entity<Food_category>(entity =>
