@@ -1,109 +1,172 @@
 ﻿using Application.Interfaces;
+using Application.Services;
+using Core.Dtos;
 using Core.Entiteti;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebAPI.Controllers
+[ApiController]
+[Route("api/[controller]")]
+public class RestaurantFoodController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class RestaurantFoodController : ControllerBase
+    private readonly IRestaurantFoodLogic _restaurantFoodLogic;
+    private readonly IRestaurantLogic _restaurantLogic;
+    private readonly IFoodLogic _foodLogic;
+
+    public RestaurantFoodController(IRestaurantFoodLogic restaurantFoodLogic, IRestaurantLogic restaurantLogic, IFoodLogic foodLogic)
     {
-        private readonly IRestaurantFoodLogic _restaurantFoodLogic;
+        _restaurantFoodLogic = restaurantFoodLogic;
+        _restaurantLogic = restaurantLogic;
+        _foodLogic = foodLogic;
+    }
 
-        public RestaurantFoodController(IRestaurantFoodLogic restaurantFoodLogic)
+    [HttpPost("link")]
+    public async Task<IActionResult> PostRestaurantFood([FromBody] RestaurantFoodDto restaurantFoodDto)
+    {
+        if (restaurantFoodDto == null || !restaurantFoodDto.Food_ID.HasValue || !restaurantFoodDto.Restaurant_ID.HasValue)
         {
-            _restaurantFoodLogic = restaurantFoodLogic;
+            return BadRequest("Invalid data.");
         }
 
-        [HttpGet("list")]
-        public async Task<IActionResult> GetRestaurantFoods()
+        try
         {
-            try
-            {
-                var restaurantFoods = await _restaurantFoodLogic.GetAllRestaurantFoodsAsync();
-                return Ok(restaurantFoods);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
+            var restaurant = await _restaurantLogic.GetRestaurantByIdAsync(restaurantFoodDto.Restaurant_ID.Value);
+            var food = await _foodLogic.GetFoodByIdAsync(restaurantFoodDto.Food_ID.Value);
 
-        [HttpGet("{restaurantId}/{foodId}")]
-        public async Task<IActionResult> GetRestaurantFood(Guid restaurantId, Guid foodId)
-        {
-            try
+            if (restaurant == null || food == null)
             {
-                var restaurantFood = await _restaurantFoodLogic.GetRestaurantFoodByIdAsync(restaurantId, foodId);
-                if (restaurantFood == null)
+                return NotFound("Restaurant or Food not found.");
+            }
+
+            var existingLink = await _restaurantFoodLogic.GetRestaurantFoodAsync(restaurantFoodDto.Restaurant_ID, restaurantFoodDto.Food_ID);
+
+            if (existingLink == null)
+            {
+                var restaurantFood = new Restaurant_Food
                 {
-                    return NotFound();
-                }
+                    Restaurant_ID = restaurantFoodDto.Restaurant_ID.Value,
+                    Food_ID = restaurantFoodDto.Food_ID.Value,
+                    Restaurant = restaurant,
+                    Food = food
+                };
 
-                return Ok(restaurantFood);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
-
-        [HttpPost("")]
-        public async Task<ActionResult<Restaurant_Food>> PostRestaurantFood(Restaurant_Food restaurantFood)
-        {
-            try
-            {
                 await _restaurantFoodLogic.AddRestaurantFoodAsync(restaurantFood);
-                return CreatedAtAction("GetRestaurantFood", new { restaurantId = restaurantFood.Restaurant_ID, foodId = restaurantFood.Food_ID }, restaurantFood);
+
+                var result = new RestaurantFoodDto
+                {
+                    Food_ID = restaurantFood.Food_ID,
+                    Restaurant_ID = restaurantFood.Restaurant_ID
+                };
+
+                return CreatedAtAction(nameof(GetRestaurantFood), new { restaurantId = restaurantFood.Restaurant_ID, foodId = restaurantFood.Food_ID }, result);
             }
-            catch (Exception ex)
+            else
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return BadRequest("The link between the restaurant and food already exists.");
             }
         }
-
-        [HttpPut("{restaurantId}/{foodId}")]
-        public async Task<IActionResult> PutRestaurantFood(Guid restaurantId, Guid foodId, Restaurant_Food restaurantFood)
+        catch (Exception ex)
         {
-            try
-            {
-                if (restaurantId != restaurantFood.Restaurant_ID || foodId != restaurantFood.Food_ID)
-                {
-                    return BadRequest();
-                }
+            return StatusCode(500, $"Internal server error: {ex.Message} - {ex.InnerException?.Message}");
+        }
+    }
 
-                await _restaurantFoodLogic.UpdateRestaurantFoodAsync(restaurantFood);
-
-                return NoContent();
-            }
-            catch (Exception ex)
+    [HttpGet("{restaurantId}/{foodId}")]
+    public async Task<IActionResult> GetRestaurantFood(Guid? restaurantId, Guid? foodId)
+    {
+        try
+        {
+            var restaurantFood = await _restaurantFoodLogic.GetRestaurantFoodAsync(restaurantId, foodId);
+            if (restaurantFood == null)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return NotFound();
             }
+
+            var result = new RestaurantFoodDto
+            {
+                Food_ID = restaurantFood.Food_ID,
+                Restaurant_ID = restaurantFood.Restaurant_ID
+            };
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    [HttpGet("all")]
+    public async Task<IActionResult> GetAllRestaurantFoods()
+    {
+        try
+        {
+            var restaurantFoods = await _restaurantFoodLogic.GetAllRestaurantFoodsAsync();
+
+            var result = restaurantFoods.Select(rf => new RestaurantFoodDto
+            {
+                Food_ID = rf.Food_ID,
+                Restaurant_ID = rf.Restaurant_ID
+            });
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    [HttpPut("{restaurantId}/{foodId}")]
+    public async Task<IActionResult> UpdateRestaurantFood(Guid? restaurantId, Guid? foodId, [FromBody] RestaurantFoodDto restaurantFoodDto)
+    {
+        if (restaurantFoodDto == null || !restaurantFoodDto.Food_ID.HasValue || !restaurantFoodDto.Restaurant_ID.HasValue)
+        {
+            return BadRequest("Invalid data.");
         }
 
-        [HttpDelete("{restaurantId}/{foodId}")]
-        public async Task<IActionResult> DeleteRestaurantFood(Guid restaurantId, Guid foodId)
+        try
         {
-            try
+            var restaurantFood = await _restaurantFoodLogic.GetRestaurantFoodAsync(restaurantId, foodId);
+            if (restaurantFood == null)
             {
-                var restaurantFood = await _restaurantFoodLogic.GetRestaurantFoodByIdAsync(restaurantId, foodId);
-                if (restaurantFood == null)
-                {
-                    return NotFound();
-                }
-
-                await _restaurantFoodLogic.DeleteRestaurantFoodAsync(restaurantId, foodId);
-
-                return NoContent();
+                return NotFound();
             }
-            catch (Exception ex)
+
+            var restaurantExists = await _restaurantFoodLogic.RestaurantExistsAsync(restaurantFoodDto.Restaurant_ID);
+            var foodExists = await _restaurantFoodLogic.FoodExistsAsync(restaurantFoodDto.Food_ID);
+
+            if (!restaurantExists || !foodExists)
             {
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return NotFound("Restaurant or Food not found.");
             }
+
+            restaurantFood.Restaurant_ID = restaurantFoodDto.Restaurant_ID.Value;
+            restaurantFood.Food_ID = restaurantFoodDto.Food_ID.Value;
+
+            await _restaurantFoodLogic.UpdateRestaurantFoodAsync(restaurantFood);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
+    }
+
+    [HttpDelete("{restaurantId}/{foodId}")]
+    public async Task<IActionResult> DeleteRestaurantFood(Guid? restaurantId, Guid? foodId)
+    {
+        try
+        {
+            await _restaurantFoodLogic.DeleteRestaurantFoodAsync(restaurantId, foodId);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
         }
     }
 }

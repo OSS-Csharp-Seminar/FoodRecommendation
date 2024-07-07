@@ -11,5 +11,6 @@ namespace DataAccess.DataServices
         Task AddAsync(Food food);
         Task UpdateAsync(Food food);
         Task DeleteAsync(Guid id);
+        Task<Food> GetByNameAsync(string name);
     }
 }

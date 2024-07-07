@@ -1,15 +1,16 @@
 ﻿using Core.Entiteti;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace DataAccess.DataServices
 {
     public interface IRestaurantFoodData
     {
-        Task<List<Restaurant_Food>> GetAllAsync();
-        Task<Restaurant_Food> GetByIdAsync(Guid restaurantId, Guid foodId);
-        Task AddAsync(Restaurant_Food restaurantFood);
-        Task UpdateAsync(Restaurant_Food restaurantFood);
-        Task DeleteAsync(Guid restaurantId, Guid foodId);
+        Task AddRestaurantFoodAsync(Restaurant_Food restaurantFood);
+        Task<Restaurant_Food> GetRestaurantFoodAsync(Guid? restaurantId, Guid? foodId);
+        Task<IEnumerable<Restaurant_Food>> GetAllRestaurantFoodsAsync();
+        Task<bool> RestaurantExistsAsync(Guid? restaurantId);
+        Task<bool> FoodExistsAsync(Guid? foodId);
+        Task UpdateRestaurantFoodAsync(Restaurant_Food restaurantFood);
+        Task DeleteRestaurantFoodAsync(Guid? restaurantId, Guid? foodId);
+
     }
 }

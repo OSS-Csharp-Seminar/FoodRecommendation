@@ -29,9 +29,21 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> RestaurantList()
         {
             var restaurants = await _restaurantLogic.GetRestaurantListAsync();
-            return Ok(restaurants);
-        }
+            var result = restaurants.Select(r => new RestaurantDto
+            {
+                Id = r.Id,
+                Name = r.Name,
+                CityId = r.CityId,
+                City = r.City?.Name,
+                Restaurant_Foods = r.Restaurant_Foods.Select(rf => new RestaurantFoodDto
+                {
+                    Food_ID = rf.Food_ID,
+                    Restaurant_ID = rf.Restaurant_ID
+                }).ToList()
+            }).ToList();
 
+            return Ok(result);
+        }
         [HttpGet("byName")]
 
         public async Task<IActionResult> GetRestaurantsByName(string name)
@@ -49,15 +61,18 @@ namespace WebAPI.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRestaurant([FromBody] Restaurant restaurant)
         {
             if (restaurant == null || restaurant.CityId == null)
             {
                 return BadRequest("Invalid data.");
             }
-
             try
             {
+                var city = await _cityLogic.GetCityByIdAsync(restaurant.CityId.Value);
+                restaurant.City = city;
+
                 await _restaurantLogic.AddRestaurantAsync(restaurant);
                 return CreatedAtAction(nameof(GetRestaurantById), new { id = restaurant.Id }, restaurant);
             }
@@ -72,7 +87,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutRestaurant(Guid id, Restaurant restaurant)
         {
             if (id != restaurant.Id)
@@ -86,7 +101,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
- 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRestaurant(Guid id)
         {
             var restaurant = await _restaurantLogic.GetRestaurantByIdAsync(id);
@@ -104,12 +119,19 @@ namespace WebAPI.Controllers
 
         public async Task<IActionResult> GetRestaurantById(Guid id)
         {
-            var restaurant = await _restaurantLogic.GetRestaurantByIdAsync(id);
-            if (restaurant == null)
+            try
             {
-                return NotFound();
+                var restaurant = await _restaurantLogic.GetRestaurantByIdAsync(id);
+                if (restaurant == null)
+                {
+                    return NotFound();
+                }
+                return Ok(restaurant);
             }
-            return Ok(restaurant);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
     }
 }

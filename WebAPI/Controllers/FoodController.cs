@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Core.Entiteti;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -51,6 +52,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Food>> PostFood(Food food)
         {
             try
@@ -65,6 +67,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutFood(Guid id, Food food)
         {
             try
@@ -84,6 +87,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteFood(Guid id)
         {
             try

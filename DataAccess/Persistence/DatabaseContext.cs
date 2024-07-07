@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Core.Entiteti;
 using System.Reflection;
+using Core.Entiteti;
 
 namespace DataAccess.Persistence
 {
@@ -19,7 +19,7 @@ namespace DataAccess.Persistence
             modelBuilder.Entity<City>(entity =>
             {
                 entity.ToTable("City");
-                entity.HasKey(c => c.CityId);
+                entity.HasKey(c => c.Id);
                 entity.Property(c => c.Name).HasMaxLength(100);
                 entity.Property(c => c.Zip).HasMaxLength(10);
                 entity.Property(c => c.County).HasMaxLength(100);
@@ -33,8 +33,15 @@ namespace DataAccess.Persistence
             modelBuilder.Entity<Restaurant>(entity =>
             {
                 entity.ToTable("Restaurant");
-                entity.HasKey(r => r.Id);
                 entity.Property(r => r.Name).HasMaxLength(100);
+                entity.HasOne(x => x.City)
+                     .WithMany(y => y.Restaurants)
+                     .HasForeignKey(x => x.CityId)
+                     .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasMany(x => x.Restaurant_Foods)
+                      .WithOne(rf => rf.Restaurant)
+                      .HasForeignKey(rf => rf.Restaurant_ID);
 
             });
 
@@ -42,15 +49,15 @@ namespace DataAccess.Persistence
             {
                 entity.ToTable("Food_category");
                 entity.HasKey(fc => fc.Id);
-                entity.Property(fc => fc.Category).IsRequired().HasMaxLength(100);
+                entity.Property(fc => fc.Category).HasMaxLength(100);
             });
 
             modelBuilder.Entity<Food>(entity =>
             {
                 entity.ToTable("Food");
                 entity.HasKey(f => f.Id);
-                entity.Property(f => f.Name).IsRequired().HasMaxLength(100);
-                entity.Property(f => f.Price).IsRequired().HasColumnType("decimal(18,2)");
+                entity.Property(f => f.Name).HasMaxLength(100);
+                entity.Property(f => f.Price).HasColumnType("decimal(18,2)");
                 entity.Property(f => f.Description).HasMaxLength(100);
                 entity.HasOne(f => f.Category)
                       .WithMany()
@@ -62,12 +69,14 @@ namespace DataAccess.Persistence
                 entity.ToTable("Restaurant_Food");
                 entity.HasKey(rf => new { rf.Food_ID, rf.Restaurant_ID });
                 entity.HasOne(rf => rf.Food)
-                      .WithMany()
+                      .WithMany(f => f.Restaurant_Foods)  // Povezivanje s kolekcijom u entitetu Food
                       .HasForeignKey(rf => rf.Food_ID);
+
                 entity.HasOne(rf => rf.Restaurant)
-                      .WithMany()
+                      .WithMany(r => r.Restaurant_Foods)  // Povezivanje s kolekcijom u entitetu Restaurant
                       .HasForeignKey(rf => rf.Restaurant_ID);
             });
+
         }
 
         public DbSet<City> City { get; set; }

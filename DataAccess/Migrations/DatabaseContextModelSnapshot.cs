@@ -24,7 +24,7 @@ namespace Application.Migrations
 
             modelBuilder.Entity("City", b =>
                 {
-                    b.Property<Guid>("CityId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -36,9 +36,6 @@ namespace Application.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -47,7 +44,7 @@ namespace Application.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.HasKey("CityId");
+                    b.HasKey("Id");
 
                     b.ToTable("City", (string)null);
                 });
@@ -66,12 +63,10 @@ namespace Application.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<decimal?>("Price")
-                        .IsRequired()
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -88,7 +83,6 @@ namespace Application.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Category")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -99,7 +93,7 @@ namespace Application.Migrations
 
             modelBuilder.Entity("Core.Entiteti.Restaurant", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -119,10 +113,13 @@ namespace Application.Migrations
 
             modelBuilder.Entity("Core.Entiteti.Restaurant_Food", b =>
                 {
-                    b.Property<Guid?>("Food_ID")
+                    b.Property<Guid>("Food_ID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("Restaurant_ID")
+                    b.Property<Guid>("Restaurant_ID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Food_ID", "Restaurant_ID");
@@ -154,13 +151,13 @@ namespace Application.Migrations
             modelBuilder.Entity("Core.Entiteti.Restaurant_Food", b =>
                 {
                     b.HasOne("Core.Entiteti.Food", "Food")
-                        .WithMany()
+                        .WithMany("Restaurant_Foods")
                         .HasForeignKey("Food_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Core.Entiteti.Restaurant", "Restaurant")
-                        .WithMany()
+                        .WithMany("Restaurant_Foods")
                         .HasForeignKey("Restaurant_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -173,6 +170,16 @@ namespace Application.Migrations
             modelBuilder.Entity("City", b =>
                 {
                     b.Navigation("Restaurants");
+                });
+
+            modelBuilder.Entity("Core.Entiteti.Food", b =>
+                {
+                    b.Navigation("Restaurant_Foods");
+                });
+
+            modelBuilder.Entity("Core.Entiteti.Restaurant", b =>
+                {
+                    b.Navigation("Restaurant_Foods");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,5 +17,6 @@ namespace Application.DataServices
         Task<List<Restaurant>> GetByNameAsync(string name);
         Task<List<Restaurant>> GetByCityNameAsync(string cityName);
         Task<bool> RestaurantExistsAsync(string name);
+        Task<Restaurant> GetByNameAndCityAsync(string name, string city);
     }
 }

@@ -21,7 +21,11 @@ namespace DataAccess.Repositories
 
         public async Task<List<Restaurant>> GetAllAsync()
         {
-            return await _context.Restaurant.Include(r => r.City).ToListAsync();
+            return await _context.Restaurant
+                .Include(r => r.City)
+                .Include(r => r.Restaurant_Foods)  // Uključivanje veze
+                .ThenInclude(rf => rf.Food)        // Uključivanje povezanog entiteta Food
+                .ToListAsync();
         }
 
         public async Task<Restaurant> GetByIdAsync(Guid id)
@@ -119,6 +123,12 @@ namespace DataAccess.Repositories
         public async Task<bool> RestaurantExistsAsync(string name)
         {
             return await _context.Restaurant.AnyAsync(r => r.Name == name);
+        }
+        public async Task<Restaurant> GetByNameAndCityAsync(string name, string city)
+        {
+            return await _context.Restaurant
+                .Include(r => r.City)
+                .FirstOrDefaultAsync(r => r.Name == name && r.City.Name == city);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Application.Interfaces;
+using Core.Dtos;
 using Core.Entiteti;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -23,7 +25,22 @@ namespace WebAPI.Controllers
             try
             {
                 var cities = await _cityLogic.GetAllCitiesAsync();
-                return Ok(cities);
+                var cityDtos = cities.Select(city => new CityDto
+                {
+                    Id = city.Id,
+                    Name = city.Name,
+                    City_code = city.City_code,
+                    County = city.County,
+                    Zip = city.Zip,
+                    Restaurants = city.Restaurants.Select(restaurant => new RestaurantDto
+                    {
+                        Id = restaurant.Id,
+                        Name = restaurant.Name,
+                        CityId = restaurant.CityId
+                    }).ToList()
+                }).ToList();
+
+                return Ok(cityDtos);
             }
             catch (Exception ex)
             {
@@ -50,6 +67,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateCity(City city)
         {
             try
@@ -69,6 +87,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateCity(Guid id, City city)
         {
             try
@@ -88,6 +107,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCity(Guid id)
         {
             try

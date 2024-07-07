@@ -315,6 +315,15 @@ C:\Users\Matej\Desktop\Faks\C#_project\FoodRecommendation\WebAPI\obj\Debug\net8.
 C:\Users\Matej\Desktop\Faks\C#_project\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.pdb
 C:\Users\Matej\Desktop\Faks\C#_project\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.genruntimeconfig.cache
 C:\Users\Matej\Desktop\Faks\C#_project\FoodRecommendation\WebAPI\obj\Debug\net8.0\ref\WebAPI.dll
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.csproj.AssemblyReference.cache
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.Properties.Resources.resources
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.csproj.GenerateResource.cache
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfoInputs.cache
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfo.cs
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.csproj.CoreCompileInputs.cache
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.sourcelink.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\appsettings.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\WebAPI.staticwebassets.runtime.json
@@ -323,6 +332,7 @@ C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\WebAPI
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\WebAPI.runtimeconfig.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\WebAPI.dll
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\WebAPI.pdb
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\AspNetCoreRateLimit.dll
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\FluentValidation.dll
@@ -617,16 +627,6 @@ C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\DataAc
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\Application.pdb
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\Core.pdb
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\bin\Debug\net8.0\DataAccess.pdb
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.csproj.AssemblyReference.cache
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.Properties.Resources.resources
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.csproj.GenerateResource.cache
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfoInputs.cache
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.AssemblyInfo.cs
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.csproj.CoreCompileInputs.cache
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.sourcelink.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\staticwebassets\msbuild.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
@@ -641,3 +641,4 @@ C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\refint
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.pdb
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.genruntimeconfig.cache
 C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\ref\WebAPI.dll
+C:\Users\pasko\Desktop\zavrsni\FoodRecommendation\WebAPI\obj\Debug\net8.0\WebAPI.MvcApplicationPartsAssemblyInfo.cs

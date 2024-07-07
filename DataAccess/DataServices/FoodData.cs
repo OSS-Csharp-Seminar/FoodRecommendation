@@ -46,5 +46,11 @@ namespace DataAccess.DataServices
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<Food> GetByNameAsync(string name)
+        {
+            return await _context.Food
+                .Include(f => f.Category)
+                .FirstOrDefaultAsync(f => f.Name == name);
+        }
     }
 }
