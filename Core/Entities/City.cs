@@ -11,6 +11,5 @@ public class City : BaseEntity
 
     [JsonIgnore]
     public virtual ICollection<Restaurant>? Restaurants { get; set; } = new List<Restaurant>();
-    //public virtual ICollection<Restaurant> Restaurants { get; set; }
-    //public List<Restaurant>? Restaurants { get; set; } = new List<Restaurant>();
+
 }

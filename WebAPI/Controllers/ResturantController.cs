@@ -87,7 +87,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutRestaurant(Guid id, Restaurant restaurant)
         {
             if (id != restaurant.Id)
@@ -101,7 +100,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRestaurant(Guid id)
         {
             var restaurant = await _restaurantLogic.GetRestaurantByIdAsync(id);

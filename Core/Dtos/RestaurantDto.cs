@@ -13,7 +13,7 @@ namespace Core.Dtos
         public Guid? CityId { get; set; }
         public string City { get; set; }
 
-        public List<RestaurantFoodDto> Restaurant_Foods { get; set; }
+        public List<RestaurantFoodDto>? Restaurant_Foods { get; set; }
     }
 
 }

@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Threading.RateLimiting;
 using Application.Configuration;
 using DataAccess.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +12,14 @@ using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure services
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+    options.Secure = CookieSecurePolicy.Always;
+});
+
+builder.Services.AddRazorPages();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -21,7 +28,7 @@ builder.Services.AddControllers()
     });
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.MultipartBodyLengthLimit = 10 * 1024 * 1024; 
+    options.MultipartBodyLengthLimit = 10 * 1024 * 1024;
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -73,6 +80,9 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(); // Ensure console logging is enabled
+
 var app = builder.Build();
 
 AutoMigrationDatabase.ApplyMigrations(app);
@@ -84,12 +94,18 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCookiePolicy(); // Ensure cookie policy is used
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseRateLimiter(); 
-
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapRazorPages();
+    endpoints.MapControllers(); // Ako koristite API kontrolere
+});
 
 app.Run();

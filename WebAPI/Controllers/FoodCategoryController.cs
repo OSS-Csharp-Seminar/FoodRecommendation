@@ -51,7 +51,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("")]
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Food_category>> PostFoodCategory(Food_category category)
         {
             try
@@ -66,7 +65,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PutFoodCategory(Guid id, Food_category category)
         {
             try
@@ -86,7 +84,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteFoodCategory(Guid id)
         {
             try

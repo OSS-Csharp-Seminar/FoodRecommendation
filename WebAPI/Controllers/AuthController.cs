@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -15,6 +14,7 @@ namespace WebAPI.Controllers
     {
         private readonly IConfiguration _configuration;
         private const string Password = "12345";
+
         public AuthController(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -23,29 +23,35 @@ namespace WebAPI.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            if (loginModel.Password != Password)
+            Console.WriteLine("Login attempt with password: " + loginModel.Password);
+
+            if (loginModel.Password != "12345")
             {
+                Console.WriteLine("Unauthorized attempt.");
                 return Unauthorized("Invalid password.");
             }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            var claims = new[]
+                {
+                    new Claim(ClaimTypes.Role, "Admin")
+                };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: creds);
+
+            return Ok(new
             {
-                Subject = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Role, "Admin") }),
-                NotBefore = DateTime.UtcNow,
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-                Issuer = _configuration["Jwt:Issuer"],
-                Audience = _configuration["Jwt:Audience"]
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-
-            return Ok(new { Token = tokenString });
+                token = new JwtSecurityTokenHandler().WriteToken(token)
+            });
         }
-    }
+}
 
     public class LoginModel
     {

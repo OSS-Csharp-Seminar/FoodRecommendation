@@ -1,0 +1,491 @@
+﻿@page
+@model WebAPI.Pages.AdminModel
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Navigation Bar */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+            .navbar a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 20px;
+                text-decoration: none;
+            }
+
+                .navbar a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                .navbar a.active {
+                    background-color: #4CAF50;
+                    color: white; 
+                }
+
+        /* Header */
+        .header {
+            padding: 60px;
+            text-align: center;
+            background: #1abc9c;
+            color: white;
+        }
+
+            .header h1 {
+                font-size: 50px;
+            }
+
+        /* Footer */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Form Container */
+        .horizontal-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 10px auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .text-danger {
+            color: #dc3545;
+        }
+
+        .form-section button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/Admin" class="active">Home</a>
+        <a href="/Login">Login</a>
+    </div>
+
+    <div class="header">
+        <h1>Admin Page</h1>
+    </div>
+
+    <div class="container">
+        <button onclick="toggleForms()" class="btn-primary">ADD</button>
+        <div id="formsContainer" style="display:none;">
+            <div class="form-section horizontal-buttons">
+                <button onclick="toggleForm('restaurantForm')" class="btn-primary">Add Restaurant</button>
+                <button onclick="toggleForm('cityForm')" class="btn-primary">Add City</button>
+                <button onclick="toggleForm('foodForm')" class="btn-primary">Add Food</button>
+                <button onclick="toggleForm('foodCategoryForm')" class="btn-primary">Add Food Category</button>
+                <button onclick="toggleForm('restaurantFoodForm')" class="btn-primary">Add Restaurant Food</button>
+            </div>
+            <div id="restaurantForm" class="form-container" style="display:none;">
+                <h3>Add Restaurant</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="addRestaurant" />
+                    <div class="form-group">
+                        <label for="restaurantName">Name:</label>
+                        <input type="text" id="restaurantName" name="Restaurant.Name" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Restaurant.Name)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="restaurantCityId">CityId:</label>
+                        <input type="text" id="restaurantCityId" name="Restaurant.CityId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Restaurant.CityId)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Restaurant</button>
+                </form>
+            </div>
+            <div id="cityForm" class="form-container" style="display:none;">
+                <h3>Add City</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="addCity" />
+                    <div class="form-group">
+                        <label for="cityName">City Name:</label>
+                        <input type="text" id="cityName" name="City.Name" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.Name)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="cityCode">City Code:</label>
+                        <input type="text" id="cityCode" name="City.CityCode" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.City_code)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="county">County:</label>
+                        <input type="text" id="county" name="City.County" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.County)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="zip">Zip:</label>
+                        <input type="text" id="zip" name="City.Zip" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.Zip)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add City</button>
+                </form>
+            </div>
+            <div id="foodForm" class="form-container" style="display:none;">
+                <h3>Add Food</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="addFood" />
+                    <div class="form-group">
+                        <label for="foodName">Name:</label>
+                        <input type="text" id="foodName" name="Food.Name" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Name)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <input type="text" id="description" name="Food.Description" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Description)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <input type="text" id="price" name="Food.Price" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Price)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryId">Category ID:</label>
+                        <input type="text" id="categoryId" name="Food.CategoryId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Category_ID)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Food</button>
+                </form>
+            </div>
+            <div id="foodCategoryForm" class="form-container" style="display:none;">
+                <h3>Add Food Category</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="addFoodCategory" />
+                    <div class="form-group">
+                        <label for="foodCategory">Category:</label>
+                        <input type="text" id="foodCategory" name="FoodCategory.Category" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.FoodCategory.Category)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Food Category</button>
+                </form>
+            </div>
+            <div id="restaurantFoodForm" class="form-container" style="display:none;">
+                <h3>Add Restaurant Food</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="addRestaurantFood" />
+                    <div class="form-group">
+                        <label for="restaurantId">Restaurant ID:</label>
+                        <input type="text" id="restaurantId" name="RestaurantFood.RestaurantId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.RestaurantFood.Restaurant_ID)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="foodId">Food ID:</label>
+                        <input type="text" id="foodId" name="RestaurantFood.FoodId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.RestaurantFood.Food_ID)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Restaurant Food</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- EDIT Forms -->
+        <button onclick="toggleEditForms()" class="btn-primary">EDIT</button>
+        <div id="editFormsContainer" style="display:none;">
+            <div class="form-section horizontal-buttons">
+                <button onclick="toggleForm('editRestaurantForm')" class="btn-primary">Edit Restaurant</button>
+                <button onclick="toggleForm('editCityForm')" class="btn-primary">Edit City</button>
+                <button onclick="toggleForm('editFoodForm')" class="btn-primary">Edit Food</button>
+                <button onclick="toggleForm('editFoodCategoryForm')" class="btn-primary">Edit Food Category</button>
+                <button onclick="toggleForm('editRestaurantFoodForm')" class="btn-primary">Edit Restaurant Food</button>
+            </div>
+            <div id="editRestaurantForm" class="form-container" style="display:none;">
+                <h3>Edit Restaurant</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="editRestaurant" />
+                    <div class="form-group">
+                        <label for="editRestaurantId">ID:</label>
+                        <input type="text" id="editRestaurantId" name="Restaurant.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Restaurant.Id)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRestaurantName">Name:</label>
+                        <input type="text" id="editRestaurantName" name="Restaurant.Name" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Restaurant.Name)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRestaurantCityId">CityId:</label>
+                        <input type="text" id="editRestaurantCityId" name="Restaurant.CityId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Restaurant.CityId)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit Restaurant</button>
+                </form>
+            </div>
+            <div id="editCityForm" class="form-container" style="display:none;">
+                <h3>Edit City</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="editCity" />
+                    <div class="form-group">
+                        <label for="editCityId">ID:</label>
+                        <input type="text" id="editCityId" name="City.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.Id)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCityName">City Name:</label>
+                        <input type="text" id="editCityName" name="City.Name" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.Name)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCityCode">City Code:</label>
+                        <input type="text" id="editCityCode" name="City.CityCode" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.City_code)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCounty">County:</label>
+                        <input type="text" id="editCounty" name="City.County" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.County)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editZip">Zip:</label>
+                        <input type="text" id="editZip" name="City.Zip" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.Zip)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit City</button>
+                </form>
+            </div>
+            <div id="editFoodForm" class="form-container" style="display:none;">
+                <h3>Edit Food</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="editFood" />
+                    <div class="form-group">
+                        <label for="editFoodId">ID:</label>
+                        <input type="text" id="editFoodId" name="Food.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Id)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFoodName">Name:</label>
+                        <input type="text" id="editFoodName" name="Food.Name" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Name)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">Description:</label>
+                        <input type="text" id="editDescription" name="Food.Description" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Description)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPrice">Price:</label>
+                        <input type="text" id="editPrice" name="Food.Price" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Price)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editCategoryId">Category ID:</label>
+                        <input type="text" id="editCategoryId" name="Food.CategoryId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Category_ID)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit Food</button>
+                </form>
+            </div>
+            <div id="editFoodCategoryForm" class="form-container" style="display:none;">
+                <h3>Edit Food Category</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="editFoodCategory" />
+                    <div class="form-group">
+                        <label for="editFoodCategoryId">ID:</label>
+                        <input type="text" id="editFoodCategoryId" name="FoodCategory.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.FoodCategory.Id)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFoodCategoryName">Category Name:</label>
+                        <input type="text" id="editFoodCategoryName" name="FoodCategory.Category" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.FoodCategory.Category)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit Food Category</button>
+                </form>
+            </div>
+            <div id="editRestaurantFoodForm" class="form-container" style="display:none;">
+                <h3>Edit Restaurant Food</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="editRestaurantFood" />
+                    <div class="form-group">
+                        <label for="editRestaurantFoodId">ID:</label>
+                        <input type="text" id="editRestaurantFoodId" name="RestaurantFood.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.RestaurantFood.Id)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRestaurantId">Restaurant ID:</label>
+                        <input type="text" id="editRestaurantId" name="RestaurantFood.RestaurantId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.RestaurantFood.Restaurant_ID)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFoodId">Food ID:</label>
+                        <input type="text" id="editFoodId" name="RestaurantFood.FoodId" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.RestaurantFood.Food_ID)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Edit Restaurant Food</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- DELETE Forms -->
+        <button onclick="toggleDeleteForms()" class="btn-primary">DELETE</button>
+        <div id="deleteFormsContainer" style="display:none;">
+            <div class="form-section horizontal-buttons">
+                <button onclick="toggleForm('deleteRestaurantForm')" class="btn-primary">Delete Restaurant</button>
+                <button onclick="toggleForm('deleteCityForm')" class="btn-primary">Delete City</button>
+                <button onclick="toggleForm('deleteFoodForm')" class="btn-primary">Delete Food</button>
+                <button onclick="toggleForm('deleteFoodCategoryForm')" class="btn-primary">Delete Food Category</button>
+                <button onclick="toggleForm('deleteRestaurantFoodForm')" class="btn-primary">Delete Restaurant Food</button>
+            </div>
+            <div id="deleteRestaurantForm" class="form-container" style="display:none;">
+                <h3>Delete Restaurant</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="deleteRestaurant" />
+                    <div class="form-group">
+                        <label for="deleteRestaurantId">ID:</label>
+                        <input type="text" id="deleteRestaurantId" name="Restaurant.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Restaurant.Id)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Delete Restaurant</button>
+                </form>
+            </div>
+            <div id="deleteCityForm" class="form-container" style="display:none;">
+                <h3>Delete City</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="deleteCity" />
+                    <div class="form-group">
+                        <label for="deleteCityId">ID:</label>
+                        <input type="text" id="deleteCityId" name="City.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.City.Id)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Delete City</button>
+                </form>
+            </div>
+            <div id="deleteFoodForm" class="form-container" style="display:none;">
+                <h3>Delete Food</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="deleteFood" />
+                    <div class="form-group">
+                        <label for="deleteFoodId">ID:</label>
+                        <input type="text" id="deleteFoodId" name="Food.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.Food.Id)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Delete Food</button>
+                </form>
+            </div>
+            <div id="deleteFoodCategoryForm" class="form-container" style="display:none;">
+                <h3>Delete Food Category</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="deleteFoodCategory" />
+                    <div class="form-group">
+                        <label for="deleteFoodCategoryId">ID:</label>
+                        <input type="text" id="deleteFoodCategoryId" name="FoodCategory.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.FoodCategory.Id)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Delete Food Category</button>
+                </form>
+            </div>
+            <div id="deleteRestaurantFoodForm" class="form-container" style="display:none;">
+                <h3>Delete Restaurant Food</h3>
+                <form method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="action" value="deleteRestaurantFood" />
+                    <div class="form-group">
+                        <label for="deleteRestaurantFoodId">ID:</label>
+                        <input type="text" id="deleteRestaurantFoodId" name="RestaurantFood.Id" class="form-control" />
+                        <span class="text-danger">@Html.ValidationMessageFor(m => m.RestaurantFood.Id)</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Delete Restaurant Food</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 - MyApp - Privacy</p>
+    </div>
+
+    @section Scripts {
+        <script>
+            function toggleForms() {
+                var formsContainer = document.getElementById('formsContainer');
+                formsContainer.style.display = formsContainer.style.display === 'none' ? 'block' : 'none';
+            }
+
+            function toggleForm(formId) {
+                var form = document.getElementById(formId);
+                form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            }
+
+            function toggleEditForms() {
+                var editFormsContainer = document.getElementById('editFormsContainer');
+                editFormsContainer.style.display = editFormsContainer.style.display === 'none' ? 'block' : 'none';
+            }
+
+            function toggleDeleteForms() {
+                var deleteFormsContainer = document.getElementById('deleteFormsContainer');
+                deleteFormsContainer.style.display = deleteFormsContainer.style.display === 'none' ? 'block' : 'none';
+            }
+        </script>
+    }
+</body>
+</html>

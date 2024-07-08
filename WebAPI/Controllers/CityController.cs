@@ -67,7 +67,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateCity(City city)
         {
             try
@@ -87,7 +86,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateCity(Guid id, City city)
         {
             try

@@ -1,12 +1,20 @@
 {
   "Version": 1,
-  "Hash": "UP3VWLnJ7S8gOC7n/n9Mw2vw66sEzB0D1eJ6DT/MV20=",
+  "Hash": "MHERJxme9kpjDiUOU9MKRaggiA02EvwCD+eeWHU5gHE=",
   "Source": "WebAPI",
   "BasePath": "_content/WebAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebAPI\\wwwroot",
+      "Source": "WebAPI",
+      "ContentRoot": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\wwwroot\\",
+      "BasePath": "_content/WebAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": [
     {
       "Identity": "C:\\Users\\pasko\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.6\\staticwebassets\\Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css",
@@ -64,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\obj\\Debug\\net8.0\\scopedcss\\bundle\\WebAPI.styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\wwwroot\\login.css",
+      "SourceId": "WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pasko\\Desktop\\zavrsni\\FoodRecommendation\\WebAPI\\wwwroot\\",
+      "BasePath": "_content/WebAPI",
+      "RelativePath": "login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\login.css"
     }
   ]
 }
